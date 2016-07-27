@@ -1,0 +1,101 @@
+@import 'reset';
+
+@mixin on-click-color($color) {
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    background-color: lighten($color, 20%);
+  }
+}
+
+
+$number-color: rgb(230, 228, 228);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 30px;
+  font-family: monospace;
+}
+
+.calc-container {
+  max-width: 380px;
+  background: rgb(116, 193, 48);
+  margin: 0 auto;
+  .screen {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 150px;
+    background: rgb(53, 55, 51);
+    span {
+      margin-bottom: 20px;
+      margin-right: 20px;
+      color: white;
+    }
+  }
+  .left-part {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+    width: 75%;
+    background: rgb(108, 146, 255);
+    .ac {
+      display: flex;
+      align-items: center;
+      width: 285px;
+      height: 110px;
+      background-color: rgb(209, 209, 209);
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      @include on-click-color(rgb(209, 209, 209));
+      span {
+        margin-left: 40px;
+      }
+    }
+    .zero {
+      display: flex;
+      align-items: center;
+      width: 190px;
+      height: 110px;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: $number-color;
+      @include on-click-color($number-color);
+      span {
+        margin-left: 40px;
+      }
+    }
+    .lt-edge {
+      border-left: 1px solid black;
+    }
+  }
+
+  .bt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+    height: 110px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    background-color: $number-color;
+    @include on-click-color($number-color);
+  }
+
+  .right-part {
+    float: right;
+    width: 25%;
+    height: 100%;
+  }
+
+  .rt {
+    background-color: rgb(255, 170, 25);
+    @include on-click-color(rgb(255, 170, 25));
+  }
+}
